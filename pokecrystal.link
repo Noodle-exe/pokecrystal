@@ -364,4 +364,5 @@ SRAM $05
 SRAM $06
 	"SRAM Mobile 3"
 HRAM
+	"hTransferVirtualOAM"
 	"HRAM"

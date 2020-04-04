@@ -1,7 +1,7 @@
 WriteOAMDMACodeToHRAM::
 	ld c, LOW(hTransferVirtualOAM)
-	ld b, .PushOAMEnd - .PushOAM
-	ld hl, .PushOAM
+	ld b, hTransferVirtualOAMEnd - hTransferVirtualOAM
+	ld hl, OAMDMACode
 .loop
 	ld a, [hli]
 	ldh [c], a
@@ -10,7 +10,9 @@ WriteOAMDMACodeToHRAM::
 	jr nz, .loop
 	ret
 
-.PushOAM:
+OAMDMACode:
+LOAD "hTransferVirtualOAM", HRAM
+hTransferVirtualOAM:: ; ff80
 	ld a, HIGH(wVirtualOAM)
 	ldh [rDMA], a
 	ld a, NUM_SPRITE_OAM_STRUCTS
@@ -18,4 +20,5 @@ WriteOAMDMACodeToHRAM::
 	dec a
 	jr nz, .pushoam_loop
 	ret
-.PushOAMEnd
+hTransferVirtualOAMEnd:: ; ff8a
+ENDL

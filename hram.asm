@@ -1,7 +1,5 @@
 SECTION "HRAM", HRAM
 
-hTransferVirtualOAM:: ds 10 ; ff80
-
 hROMBankBackup:: db ; ff8a
 hBuffer:: db ; ff8b
 hSRAMBank:: db ; ff8c
